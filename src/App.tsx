@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './assets/gametrader-logo-version-1.png';
 import './App.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from "./components/home-page/HomePage";
