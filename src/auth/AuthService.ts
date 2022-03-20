@@ -19,7 +19,8 @@ class AuthService {
     }
 
     register(registerRequest: RegisterRequest) {
-        return axios.post(`${process.env.REACT_APP_API_URL}/register`, registerRequest);
+        return axios.post(`${process.env.REACT_APP_API_URL}/register`, registerRequest)
+            .then(response => response.data);
     }
 
     logout() {
