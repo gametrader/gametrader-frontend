@@ -23,7 +23,7 @@ function App() {
                 </Routes>
 
                 <div id = "footer">
-                    {/*<Footer/>*/}
+                    <Footer/>
                 </div>
             </div>
 
