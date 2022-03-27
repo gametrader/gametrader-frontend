@@ -12,8 +12,12 @@ const Header = () => {
                     <img className={styles.logo} src={logo} alt="App logo"/>
                     <p className={styles.motto + " gt-vt-font"}>SPRZEDAJ SPRZĘT<br></br>NIE KOLEGÓW</p>
                 </div>
-                <div>
+                <div className= {styles.rightSection}>
                     {/* Add aditional buttons here if you want them to the left side */}
+                    <button type="button" className={styles.button + " btn gt-btn-primary"}
+                            onClick={() => navigate('/login')}>
+                            Zaloguj się
+                    </button>
                     <button type="button" className={styles.button + " btn gt-btn-primary"}
                             onClick={() => navigate('/register')}>
                             Utwórz konto
