@@ -1,16 +1,16 @@
 .footer {
-  min-height: 52px;
+  min-height: 60px;
   height: 8vh;
-  width: 100vw;
   background-color: var(--gt-secondary);
 }
 
-.container{
+.container {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.75rem
 }
 
 .leftSection{

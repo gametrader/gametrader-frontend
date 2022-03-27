@@ -13,7 +13,7 @@ const HomePage = () => {
                 <button type="button" className="btn gt-btn-primary" onClick={() => navigate('/login')}>Login</button>
                 <button type="button" className="btn gt-btn-secondary" onClick={() => navigate('/register')}>Register</button>
             </div>
-            <div className="tmp"></div>
+            lorem2500
         </div>
     );
 };
