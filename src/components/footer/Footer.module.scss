@@ -29,10 +29,8 @@
 .rightSection{
   width:25%;
   display: flex;
+  column-gap: 10px;
   justify-content: right;
-}
-.rightSection button{
-  margin: 0 0 0 10px;
 }
 
 
