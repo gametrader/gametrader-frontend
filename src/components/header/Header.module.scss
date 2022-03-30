@@ -60,7 +60,16 @@
   cursor: pointer;
 }
 
-.rightSection{
-  display: flex;
-  column-gap: 8px;
+.rightSection li i{
+  padding: 8px;
+  border-radius: 26px;
+  border: solid 1px var(--gt-primary);
+  background-color: var(--gt-background);
 }
+
+.rightSection li a{
+  text-decoration: none;
+  color: var(--gt-primary);
+  font-size: 0.875rem;
+}
+

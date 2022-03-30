@@ -12,7 +12,7 @@ function App() {
         <Router>
             <div className='gt-main'>
                 <Header/>
-                    <div className={"gt-container"}>
+                    <div className={"container"}>
                     <Routes>
                         <Route path='/' element={<HomePage />} />
                         <Route path='/register' element={<RegisterPage />} />
