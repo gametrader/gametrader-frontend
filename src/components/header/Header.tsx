@@ -21,15 +21,15 @@ const Header = () => {
                         {/*Być może tę ikonę powinniśmy umieścić w <button></button> bez styli*/}
                         <li onClick={ () => navigate('/')}>
                             <i className={"fa fa-bars"}/>
-                            <a>Dodaj</a>
+                            <a href="/">Dodaj</a>
                         </li>
                         <li onClick={ () => navigate('/')}>
                             <i className={"fa fa-bars"}/>
-                            <a>Wiadomości</a>
+                            <a href="/">Wiadomości</a>
                         </li>
                         <li onClick={ () => navigate('/')}>
                             <i className={"fa fa-bars"}/>
-                            <a>Konto</a>
+                            <a href="/">Konto</a>
                         </li>
                     </ul>
 
