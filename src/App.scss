@@ -52,3 +52,34 @@ html, body, #root {
 .gt-content {
   padding: 0 5em;
 }
+
+.gt-container{
+  display: grid;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .gt-container{
+    width: 480px;
+  }
+}
+
+@media (min-width: 960px) {
+  .gt-container{
+    width: 840px;
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .gt-container{
+    width: 1280px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .gt-container{
+    width: 1600px;
+  }
+}
