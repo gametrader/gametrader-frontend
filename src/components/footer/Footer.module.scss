@@ -8,102 +8,96 @@
 
 .footer{
   height: 100%;
-  //width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
   padding-bottom: 1rem;
+
+  .centerSection{
+    display: flex;
+    justify-content: center;
+    order: 1;
+  }
+
+  button{
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  p{
+    margin: 0;
+  }
 }
-
-
-.footer .centerSection{
-  display: flex;
-  justify-content: center;
-  order: 1;
-}
-
-.footer .centerSection p{
-  margin: 0;
-}
-
-.footer button{
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
 
 @media (min-width: 600px) {
   .footer{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-  .footer button{
-    width: auto;
-    margin:0;
-  }
-  .footer .centerSection{
-    order: 0;
-  }
-  .footer .rightSection{
-    display: flex;
-    column-gap: 0.5rem;
-    justify-content: space-between;
-  }
-  .footer .rightSection button{
-    //width: 5rem;
+
+    button{
+      width: auto;
+      margin:0;
+    }
+
+    .centerSection{
+      order: 0;
+    }
+
+    .rightSection{
+      display: flex;
+      column-gap: 0.5rem;
+      justify-content: space-between;
+    }
   }
 }
 
 
 @media (min-width: 960px) {
+  .footer {
+    .leftSection {
+      justify-content: left;
+    }
 
-  .footer .leftSection{
-    justify-content: left;
-  }
-  .footer .xd{
-    justify-content: right;
-  }
-
-  .footer .centerSection{
-    width: auto;
-    order: 0;
+    .centerSection {
+      width: auto;
+      order: 0;
+    }
   }
 }
 
 
 @media (min-width: 1440px) {
   .footer button{
-    width: auto;
-  }
-  .footer .leftSection{
-    justify-content: left;
-  }
+    button {
+      width: auto;
+    }
 
-  .footer .xd .rightSection button{
+    .leftSection{
+      justify-content: left;
+    }
 
-  }
-
-  .footer .centerSection{
-    width: auto;
-    order: 0;
+    .centerSection{
+      width: auto;
+      order: 0;
+    }
   }
 }
 
 @media (min-width: 1920px) {
   .footer button{
-    width: auto;
-  }
-  .footer .leftSection{
-    justify-content: left;
+    button {
+      width: auto;
+    }
+
+    .leftSection{
+      justify-content: left;
+    }
+
+    .centerSection{
+      width: auto;
+      order: 0;
+    }
   }
 
-  .footer .xd .rightSection button{
-
-  }
-
-  .footer .centerSection{
-    width: auto;
-    order: 0;
-  }
 }
