@@ -6,17 +6,18 @@ import {useNavigate} from "react-router-dom";
 const Footer = () => {
     const navigate = useNavigate();
     return (
-        <div className={styles.footer}>
-            <div className={styles.container + " gt-margin-container"}>
+        <footer className={styles.gtFooter}>
+            <div className={"gt-container " + styles.footer}>
+
                 <div className={styles.leftSection}>
                     <button type="button" className={styles.button + " btn gt-btn-primary"}
                             onClick={() => navigate('/Help')}>
-                        Masz jakiś problem?
+                        Masz problem?
                     </button>
                 </div>
 
                 <div className={styles.centerSection}>
-                    <p className={styles.copyright}>Copyright GameTrader 2022</p>
+                    <p className={styles.copyright}>GameTrader 2022</p>
                 </div>
 
                 <div className={styles.rightSection}>
@@ -29,8 +30,9 @@ const Footer = () => {
                         O nas
                     </button>
                 </div>
+
             </div>
-        </div>
+        </footer>
     );
 }
 

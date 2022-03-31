@@ -8,29 +8,21 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
 function App() {
-  return (
-      <Router>
-        <div className='gt-main'>
-            <div id = "header">
+    return (
+        <Router>
+            <div className='gt-main'>
                 <Header/>
+                    <div className={"gt-container"}>
+                    <Routes>
+                        <Route path='/' element={<HomePage />} />
+                        <Route path='/register' element={<RegisterPage />} />
+                        <Route path='/login' element={<LoginPage />} />
+                    </Routes>
+                    </div>
+                <Footer />
             </div>
-
-            <div id = "content">
-                <Routes>
-                    <Route path='/' element={<HomePage/>} />
-                    <Route path='/register' element={<RegisterPage/>} />
-                    <Route path='/login' element={<LoginPage/>} />
-                </Routes>
-
-                <div id = "footer">
-                    <Footer/>
-                </div>
-            </div>
-
-        </div>
-      </Router>
-
-  );
+        </Router>
+    );
 }
 
 export default App;
