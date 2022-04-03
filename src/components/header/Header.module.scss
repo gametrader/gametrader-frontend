@@ -1,0 +1,75 @@
+.gtHeader {
+  height: 8vh;
+  min-height: 60px;
+  background-color: var(--gt-secondary);
+}
+
+.headerWrapper {
+  height: 100%;
+}
+
+.header{
+  height: 100%;
+  width:100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftSection{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo{
+  height: 100%;
+}
+
+.motto{
+  color: var(--gt-primary);
+  margin: 0 0 0 0;
+  line-height: 1rem;
+  font-size: 1rem;
+}
+
+.rightSection{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 575px) {
+  .gtHeader{
+    margin-bottom: 4.5rem;
+  }
+  .leftSection{
+    justify-content: center;
+  }
+  .rightSection{
+    padding-top: 2rem;
+  }
+}
+
+.rightSection li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--gt-primary);
+  cursor: pointer;
+}
+
+.rightSection li i{
+  padding: 8px;
+  border-radius: 26px;
+  border: solid 1px var(--gt-primary);
+  background-color: var(--gt-background);
+}
+
+.rightSection li a{
+  text-decoration: none;
+  color: var(--gt-primary);
+  font-size: 0.875rem;
+}
+
