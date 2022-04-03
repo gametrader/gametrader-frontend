@@ -39,6 +39,28 @@ form {
         background-color: var(--gt-background);
         color: var(--gt-primary) !important;
     }
+
+    .inputContainer {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.25rem;
+        width: 100%;
+
+        .warning {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            column-gap: 0.25rem;
+            color: var(--gt-primary);
+            border-radius: 0.25rem;
+            font-weight: bold;
+            padding: 0 0.25rem;
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
 }
 
 @media (min-width: 600px) {
