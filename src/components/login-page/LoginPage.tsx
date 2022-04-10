@@ -9,7 +9,9 @@ const LoginPage = () => {
     const onLoginSubmit: SubmitHandler<LoginRequest> = (data: LoginRequest) => {
         console.log(data);
         authService.login(data).then(
-            () => { },
+            () => {
+                // TODO Forward user to desired website (probably with router parameters)
+            },
             () => {
                 // TODO Handle 400 responses from backend
             }
@@ -29,12 +31,12 @@ const LoginPage = () => {
                         <label htmlFor={"userName"}>Nazwa użytkownika</label>
                         <div className={styles.inputContainer}>
                             <input type="text" name="userName" {...register("username", { required: true })} />
-                            <div className={styles.warning} style={{ 'visibility': errors.username ? 'visible' : 'hidden' }}>
+                            { errors.username && <div className={styles.warning}>
                                 <i className={"fa fa-exclamation-circle"}/>
                                 <p>
                                     Nazwa użytkownika jest wymagana.
                                 </p>
-                            </div>
+                            </div> }
                         </div>
                     </div>
 
@@ -42,12 +44,12 @@ const LoginPage = () => {
                         <label htmlFor={"password"}>Hasło</label>
                         <div className={styles.inputContainer}>
                             <input type="text" name="password" {...register("password", { required: true })} />
-                            <div className={styles.warning} style={{ 'visibility': errors.password ? 'visible' : 'hidden' }}>
+                            { errors.password && <div className={styles.warning}>
                                 <i className={"fa fa-exclamation-circle"}/>
                                 <p>
                                     Hasło jest wymagane.
                                 </p>
-                            </div>
+                            </div> }
                         </div>
                     </div>
 
