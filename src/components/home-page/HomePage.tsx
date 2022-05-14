@@ -6,12 +6,32 @@ const HomePage = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className={styles.text}>
-            HomePage<br></br>
-            Running instance: {process.env.REACT_APP_ENVIROMENT}
-			<div>
-				<button type="button" className="btn gt-btn-primary" onClick={() => navigate('/login')}>Login</button>
-				<button type="button" className="btn gt-btn-secondary" onClick={() => navigate('/register')}>Register</button>
+		<div className={'gt-container '}>
+			<div className={styles.AdvertisementsSelectedForUser}>
+				<h2>Wybrane dla Ciebie</h2>
+				<ul className={' ' + styles.AdvertisementsSelectedContainer}>
+					<li onClick={ () => navigate('/')}>
+
+					</li>
+				</ul>
+			</div>
+
+			<div className={styles.allCategories}>
+				<h2>Wszystkie kategorie</h2>
+				<ul className={' ' + styles.allCategoriesContainer}>
+					<li onClick={ () => navigate('/')}>
+
+					</li>
+				</ul>
+			</div>
+
+			<div className={styles.lastAddedAdvertisements}>
+				<h2>Ostatnio dodane</h2>
+				<ul className={' ' + styles.lastAdvertisementsContainer}>
+					<li onClick={ () => navigate('/')}>
+
+					</li>
+				</ul>
 			</div>
 		</div>
 	);
