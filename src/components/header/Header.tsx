@@ -31,6 +31,12 @@ const Header = () => {
 							<i className={'fa fa-bars'}/>
 							<a href="/">Konto</a>
 						</li>
+						<li onClick={ () => navigate('/login')}>
+							<button type="button" className="btn gt-btn-primary">Login</button>
+						</li>
+						<li onClick={ () => navigate('/register')}>
+							<button type="button" className="btn gt-btn-secondary">Register</button>
+						</li>
 					</ul>
 
 				</div>
