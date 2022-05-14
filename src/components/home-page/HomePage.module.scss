@@ -1,9 +1,38 @@
 h2{
     text-align: center;
 }
-ul{
+ul {
+
     list-style-type: none;
+
+    i {
+        color: var(--gt-primary);
+    }
 }
-i{
-    color:var(--gt-primary);
+
+.AdvertisementsSelectedForUser{
+    ul{
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+
+    }
 }
+
+.lastAddedAdvertisements{
+    ul{
+        display: flex;
+        list-style-type: none;
+        flex-wrap: wrap;
+        gap:20px;
+
+        li{
+
+            i{
+                color:var(--gt-primary);
+            }
+        }
+    }
+}
+
+

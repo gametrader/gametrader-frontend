@@ -50,8 +50,53 @@ const HomePage = () => {
 			<div className={styles.lastAddedAdvertisements}>
 				<h2>Ostatnio dodane</h2>
 				<ul className={' ' + styles.lastAdvertisementsContainer}>
-					<li onClick={ () => navigate('/')}>
-
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
+					</li>
+					<li>
+						<Advertisement />
 					</li>
 				</ul>
 			</div>
