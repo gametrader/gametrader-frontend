@@ -4,23 +4,12 @@ import Advertisement from './../advertisement/Advertisement';
 import { CategoryModel } from '../../models/CategoryModel';
 import Category from '../category/Category';
 import {AdvertisementModel} from '../../models/AdvertisementModel';
+import SearchBar from '../search-bar/SearchBar';
+import advertisementCategoriesService from '../../services/AdvertisementCategoriesService';
 
 const HomePage = () => {
 	// TODO - download this list from backend, add redirects to pages
-	const allCategories: CategoryModel[] = [
-		{name: 'Gry', iconName: 'fa fa-gamepad'},
-		{name: 'Komputery', iconName: 'fa fa-desktop'},
-		{name: 'Laptopy', iconName: 'fa fa-laptop'},
-		{name: 'Monitory i TV', iconName: 'fa fa-television'},
-		{name: 'Karty graficzne', iconName: 'fa fa-microchip'},
-		{name: 'Klawiatury', iconName: 'fa fa-keyboard-o'},
-		{name: 'Myszki', iconName: 'fa fa-mouse-pointer'},
-		{name: 'Kontrolery', iconName: 'fa fa-gamepad'},
-		{name: 'Podzespoły do PC', iconName: 'fa fa-cogs'},
-		{name: 'Słuchawki', iconName: 'fa fa-headphones'},
-		{name: 'Fotele', iconName: 'fa fa-bolt'},
-		{name: 'Akcesoria', iconName: 'fa fa-barcode'},
-	];
+	const [allCategories, setAllCategories] = useState<CategoryModel[]>([]);
 
 	const allSelectedAdvertisements: AdvertisementModel[] = [
 		{title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
@@ -114,60 +103,74 @@ const HomePage = () => {
 		setSelectedAdvertisementsSlider();
 	};
 
+	const getAllCategoriesList = () => {
+		advertisementCategoriesService.getAdvertisementCategories().then((response) => {
+			setAllCategories(response);
+			setCategoriesSlider();
+		});
+	};
+
 	useEffect(() => {
 		// Add initializing logic here
-		setCategoriesSlider();
+		getAllCategoriesList();
 		setSelectedAdvertisementsSlider();
 	}, []);
 
+	useEffect(() => {
+		setCategoriesSlider();
+	}, [allCategories]);
+
 
 	return (
-		<div className={'gt-container '}>
-			<div className={styles.AdvertisementsSelectedForUser}>
-				<h2>Wybrane dla Ciebie</h2>
-				<ul className={' ' + styles.AdvertisementsSelectedContainer}>
-					<li onClick={ () => moveSelectedAdvertisementsSlider('left')} className={styles.chevron}>
-						<i className={'fa fa-chevron-left'}/>
-					</li>
-					{ selectedAdvertisements.map((advertisement, index) => (
-						<li key={index}>
-							<Advertisement advertisement={advertisement} />
+		<>
+			<SearchBar />
+			<div className={'gt-container '}>
+				<div className={styles.AdvertisementsSelectedForUser}>
+					<h2>Wybrane dla Ciebie</h2>
+					<ul className={' ' + styles.AdvertisementsSelectedContainer}>
+						<li onClick={ () => moveSelectedAdvertisementsSlider('left')} className={styles.chevron}>
+							<i className={'fa fa-chevron-left'}/>
 						</li>
-					))}
-					<li onClick={ () => moveSelectedAdvertisementsSlider('right')} className={styles.chevron}>
-						<i className={'fa fa-chevron-right'}/>
-					</li>
-				</ul>
-			</div>
+						{ selectedAdvertisements.map((advertisement, index) => (
+							<li key={index}>
+								<Advertisement advertisement={advertisement} />
+							</li>
+						))}
+						<li onClick={ () => moveSelectedAdvertisementsSlider('right')} className={styles.chevron}>
+							<i className={'fa fa-chevron-right'}/>
+						</li>
+					</ul>
+				</div>
 
-			<div className={styles.allCategories}>
-				<h2>Wszystkie kategorie</h2>
-				<ul className={styles.allCategoriesContainer}>
-					<li onClick={ () => moveCategoriesSlider('left')} className={styles.chevron}>
-						<i className={'fa fa-chevron-left'}/>
-					</li>
-					{ categories.map((category, index) => (
-						<li key={index} style={{width: '100%'}}>
-							<Category category={category}/>
+				<div className={styles.allCategories}>
+					<h2>Wszystkie kategorie</h2>
+					<ul className={styles.allCategoriesContainer}>
+						<li onClick={ () => moveCategoriesSlider('left')} className={styles.chevron}>
+							<i className={'fa fa-chevron-left'}/>
 						</li>
-					))}
-					<li onClick={ () => moveCategoriesSlider('right')} className={styles.chevron}>
-						<i className={'fa fa-chevron-right'}/>
-					</li>
-				</ul>
-			</div>
+						{ categories.map((category, index) => (
+							<li key={index} style={{width: '100%'}}>
+								<Category category={category}/>
+							</li>
+						))}
+						<li onClick={ () => moveCategoriesSlider('right')} className={styles.chevron}>
+							<i className={'fa fa-chevron-right'}/>
+						</li>
+					</ul>
+				</div>
 
-			<div className={styles.lastAddedAdvertisements}>
-				<h2>Ostatnio dodane</h2>
-				<ul className={' ' + styles.lastAdvertisementsContainer}>
-					{ allAdvertisements.map((advertisement, index) => (
-						<li key={index}>
-							<Advertisement advertisement={advertisement} />
-						</li>
-					))}
-				</ul>
+				<div className={styles.lastAddedAdvertisements}>
+					<h2>Ostatnio dodane</h2>
+					<ul className={' ' + styles.lastAdvertisementsContainer}>
+						{ allAdvertisements.map((advertisement, index) => (
+							<li key={index}>
+								<Advertisement advertisement={advertisement} />
+							</li>
+						))}
+					</ul>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
