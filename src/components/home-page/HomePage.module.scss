@@ -36,3 +36,19 @@ ul {
 }
 
 
+i{
+    color:var(--gt-primary);
+}
+
+.allCategoriesContainer {
+    display: flex;
+}
+
+.chevron {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
