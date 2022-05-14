@@ -1,0 +1,14 @@
+.advertisement{
+  width: 250px;
+
+  .previewImage{
+    width:90%;
+    height: 150px;
+
+  }
+
+  .content{
+    display: flex;
+    justify-content: space-between;
+  }
+}
