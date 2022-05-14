@@ -1,5 +1,6 @@
 h2{
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 ul {
 
@@ -11,6 +12,7 @@ ul {
 }
 
 .AdvertisementsSelectedForUser{
+    margin-top: 5rem;
     ul{
         display: flex;
         justify-content: space-between;
@@ -20,8 +22,12 @@ ul {
 }
 
 .lastAddedAdvertisements{
+    margin-top: 5rem;
     ul{
+
+        padding: 0;
         display: flex;
+        justify-content: center;
         list-style-type: none;
         flex-wrap: wrap;
         gap:20px;
@@ -42,6 +48,10 @@ i{
 
 .allCategoriesContainer {
     display: flex;
+}
+
+.allCategories{
+    margin-top: 5rem;
 }
 
 .chevron {

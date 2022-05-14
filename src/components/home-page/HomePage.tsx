@@ -35,6 +35,29 @@ const HomePage = () => {
 		{title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
 	];
 
+	const allAdvertisements: AdvertisementModel[] = [
+		{title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:true},
+		{title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+		{title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
+	];
+
 	const [categories, setCategories] = useState<CategoryModel[]>([]);
 	const [categoriesStartIndex, setCategoriesStartIndex] = useState<number>(0);
 	const [categoriesEndIndex, setCategoriesEndIndex] = useState<number>(6);
@@ -43,6 +66,8 @@ const HomePage = () => {
 	const [selectedAdvertisements, setSelectedAdvertisements] = useState<AdvertisementModel[]>([]);
 	const [selectedAdvertisementsStartIndex, setSelectedAdvertisementsStartIndex] = useState<number>(0);
 	const [selectedAdvertisementsEndIndex, setSelectedAdvertisementsEndIndex] = useState<number>(6);
+
+
 
 	const setCategoriesSlider = () => {
 		setCategories(allCategories.slice(categoriesStartIndex, categoriesEndIndex));
@@ -135,7 +160,11 @@ const HomePage = () => {
 			<div className={styles.lastAddedAdvertisements}>
 				<h2>Ostatnio dodane</h2>
 				<ul className={' ' + styles.lastAdvertisementsContainer}>
-
+					{ allAdvertisements.map((advertisement, index) => (
+						<li key={index}>
+							<Advertisement advertisement={advertisement} />
+						</li>
+					))}
 				</ul>
 			</div>
 		</div>
