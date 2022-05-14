@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
-import { useNavigate } from 'react-router-dom';
 import Advertisement from './../advertisement/Advertisement';
 import { CategoryModel } from '../../models/CategoryModel';
 import Category from '../category/Category';
-import {AdvertisementModel} from "../../models/AdvertisementModel";
+import {AdvertisementModel} from '../../models/AdvertisementModel';
 
 const HomePage = () => {
-	const navigate = useNavigate();
-
 	// TODO - download this list from backend, add redirects to pages
 	const allCategories: CategoryModel[] = [
 		{name: 'Gry', iconName: 'fa fa-gamepad'},
@@ -95,7 +92,7 @@ const HomePage = () => {
 	useEffect(() => {
 		// Add initializing logic here
 		setCategoriesSlider();
-		setSelectedAdvertisementsSlider()
+		setSelectedAdvertisementsSlider();
 	}, []);
 
 

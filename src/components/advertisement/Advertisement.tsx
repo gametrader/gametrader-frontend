@@ -1,15 +1,15 @@
 import React, {FunctionComponent} from 'react';
 import styles from '../advertisement/Advertisement.module.scss';
 import {useNavigate} from 'react-router-dom';
-import example from "../../assets/debil.jpg";
-import {AdvertisementModel} from "../../models/AdvertisementModel";
+import example from '../../assets/debil.jpg';
+import {AdvertisementModel} from '../../models/AdvertisementModel';
 
 
 const Advertisement:FunctionComponent<{advertisement: AdvertisementModel}> = ({advertisement}) => {
 	const navigate = useNavigate();
 	return (
 		<div className={'' + styles.advertisement}>
-			<img className={'' + styles.previewImage} src={example} onClick={ () => navigate('/')}  alt="Preview image"/>
+			<img className={'' + styles.previewImage} src={example} onClick={ () => navigate('/')}  alt='Preview image'/>
 			<div className={'' + styles.content}>
 				<div>
 					<h3 className={'' + styles.title}>
