@@ -123,7 +123,7 @@ const HomePage = () => {
 					</li>
 					{ categories.map((category, index) => (
 						<li key={index} style={{width: '100%'}}>
-							<Category name={category.name} iconName={category.iconName} />
+							<Category category={category}/>
 						</li>
 					))}
 					<li onClick={ () => moveCategoriesSlider('right')} className={styles.chevron}>
