@@ -7,7 +7,6 @@ import styles from './RegisterPage.module.scss';
 const RegisterPage = () => {
     const { register, formState: { errors }, handleSubmit, watch } = useForm<RegisterRequest>(); 
     const onRegisterSubmit: SubmitHandler<RegisterRequest> = (data: RegisterRequest) => {
-        console.log(data);
         authService.register(data).then(
             () => {
                 // TODO Route user back to /login

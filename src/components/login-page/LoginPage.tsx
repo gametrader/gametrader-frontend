@@ -7,7 +7,6 @@ import authService from '../../auth/AuthService';
 const LoginPage = () => {
     const { register, formState: { errors }, handleSubmit } = useForm<LoginRequest>();
     const onLoginSubmit: SubmitHandler<LoginRequest> = (data: LoginRequest) => {
-        console.log(data);
         authService.login(data).then(
             () => {
                 // TODO Forward user to desired website (probably with router parameters)
