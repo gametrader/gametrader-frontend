@@ -5,7 +5,7 @@ import example from '../../assets/debil.jpg';
 const AddAdvertisementPage = () => {
 	return (
 		<div className={'gt-container ' + styles.container}>
-			<form>
+			<form className={styles.addAdvertisementForm}>
 				<div className={styles.section}>
 					<label htmlFor={'title'}><h3>Tytuł ogłoszenia</h3></label>
 					<input type='text' name='title'/>
