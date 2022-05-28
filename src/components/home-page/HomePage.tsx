@@ -3,49 +3,15 @@ import styles from './HomePage.module.scss';
 import Advertisement from './../advertisement/Advertisement';
 import { CategoryModel } from '../../models/CategoryModel';
 import Category from '../category/Category';
-import {AdvertisementModel} from '../../models/AdvertisementModel';
+import { AdvertisementModel } from '../../models/AdvertisementModel';
 import SearchBar from '../search-bar/SearchBar';
 import advertisementCategoriesService from '../../services/AdvertisementCategoriesService';
+import advertisementService from '../../services/AdvertisementService';
 
 const HomePage = () => {
-	// TODO - download this list from backend, add redirects to pages
 	const [allCategories, setAllCategories] = useState<CategoryModel[]>([]);
-
-	const allSelectedAdvertisements: AdvertisementModel[] = [
-		{title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:true},
-		{title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-	];
-
-	const allAdvertisements: AdvertisementModel[] = [
-		{title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:true},
-		{title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-		{title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false},
-	];
+	const [allSelectedAdvertisements, setAllSelectedAdvertisements] = useState<AdvertisementModel[]>([]);
+	const [allRecentlyAddedAdvertisements, setAllRecentlyAddedAdvertisements] = useState<AdvertisementModel[]>([]);
 
 	const [categories, setCategories] = useState<CategoryModel[]>([]);
 	const [categoriesStartIndex, setCategoriesStartIndex] = useState<number>(0);
@@ -55,8 +21,6 @@ const HomePage = () => {
 	const [selectedAdvertisements, setSelectedAdvertisements] = useState<AdvertisementModel[]>([]);
 	const [selectedAdvertisementsStartIndex, setSelectedAdvertisementsStartIndex] = useState<number>(0);
 	const [selectedAdvertisementsEndIndex, setSelectedAdvertisementsEndIndex] = useState<number>(6);
-
-
 
 	const setCategoriesSlider = () => {
 		setCategories(allCategories.slice(categoriesStartIndex, categoriesEndIndex));
@@ -110,15 +74,28 @@ const HomePage = () => {
 		});
 	};
 
+	const getAdvertisements = () => {
+		advertisementService.getSelectedAdvertisements().then((reponse) => {
+			setAllSelectedAdvertisements(reponse);
+		});
+		advertisementService.getRecentlyAddedAdvertisements().then((response) => {
+			setAllRecentlyAddedAdvertisements(response);
+		});
+	};
+
 	useEffect(() => {
 		// Add initializing logic here
 		getAllCategoriesList();
-		setSelectedAdvertisementsSlider();
+		getAdvertisements();
 	}, []);
 
 	useEffect(() => {
 		setCategoriesSlider();
 	}, [allCategories]);
+
+	useEffect(() => {
+		setSelectedAdvertisementsSlider();
+	}, [allSelectedAdvertisements]);
 
 
 	return (
@@ -162,7 +139,7 @@ const HomePage = () => {
 				<div className={styles.lastAddedAdvertisements}>
 					<h2>Ostatnio dodane</h2>
 					<ul className={' ' + styles.lastAdvertisementsContainer}>
-						{ allAdvertisements.map((advertisement, index) => (
+						{ allRecentlyAddedAdvertisements.map((advertisement, index) => (
 							<li key={index}>
 								<Advertisement advertisement={advertisement} />
 							</li>
