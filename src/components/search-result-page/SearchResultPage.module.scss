@@ -1,0 +1,44 @@
+#titleHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    row-gap: 0.5em;
+}
+
+#advertisementList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+#paginationBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2px;
+}
+
+#rightChevron {
+    border-radius: 0 0.5em 0.5em 0;
+}
+
+#leftChevron {
+    border-radius: 0.5em 0 0 0.5em;
+}
+
+.paginationItem {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    background-color: var(--gt-secondary);
+
+    i {
+        color: white
+    }
+}
+
