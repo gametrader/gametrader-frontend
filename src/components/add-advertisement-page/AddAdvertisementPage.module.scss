@@ -1,0 +1,82 @@
+.addAdvertisementForm {
+  background-color: var(--gt-background);
+  width: 100%;
+  display: flex;
+  justify-content: right;
+
+  select, input, textarea {
+    margin-bottom: 2rem;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gt-secondary);
+  padding: 1rem;
+
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-color: var(--gt-secondary);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.6rem;
+      color: var(--gt-primary);
+      transition: 1s;
+      overflow: hidden;
+    }
+
+    button:hover {
+      background-color: var(--gt-primary);
+      color: #fff;
+      transform: rotate(180deg);
+    }
+  }
+
+  .sectionContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 150px;
+    height: 100px;
+    transition: 1s;
+  }
+
+  img:hover {
+    transform: rotate(360deg);
+  }
+
+  .addImageButton {
+    display: none;
+  }
+}
+
+select {
+  width: 50%;
+}
+
+.descriptionField {
+  height: 10rem;
+}
+
+.buttonToRight {
+  display: flex;
+  justify-content: right;
+}
+
+.loginBtn {
+  width: 200px;
+  font-size: 1.5rem !important;
+}
