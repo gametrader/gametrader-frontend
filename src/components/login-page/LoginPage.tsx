@@ -43,7 +43,7 @@ const LoginPage = () => {
 					<div className={styles.row}>
 						<label htmlFor={'password'}>Hasło</label>
 						<div className={styles.inputContainer}>
-							<input type="text" name="password" {...register('password', { required: true })} />
+							<input type="password" name="password" {...register('password', { required: true })} />
 							{ errors.password && <div className={styles.warning}>
 								<i className={'fa fa-exclamation-circle'}/>
 								<p>
