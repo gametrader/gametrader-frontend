@@ -6,6 +6,8 @@ import RegisterPage from './components/register-page/RegisterPage';
 import LoginPage from './components/login-page/LoginPage';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import AddAdvertisementPage from './components/add-advertisement-page/AddAdvertisementPage';
+
 
 const App = () => {
 	return (
@@ -16,6 +18,7 @@ const App = () => {
 					<Route path='/' element={<HomePage />} />
 					<Route path='/register' element={<RegisterPage />} />
 					<Route path='/login' element={<LoginPage />} />
+					<Route path='/add-advertisement' element={<AddAdvertisementPage />} />
 				</Routes>
 				<Footer />
 			</div>

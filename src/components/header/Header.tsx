@@ -19,9 +19,9 @@ const Header = () => {
 					<ul className={'col-xs col-sm-5 col-md-5 col-lg-6 col-xl-6 ' + styles.rightSection}>
 						{/* Add aditional buttons here if you want them to the left side */}
 						{/*Być może tę ikonę powinniśmy umieścić w <button></button> bez styli*/}
-						<li onClick={ () => navigate('/')}>
+						<li onClick={ () => navigate('/add-advertisement')}>
 							<i className={'fa fa-bars'}/>
-							<a href="/">Dodaj</a>
+							Dodaj
 						</li>
 						<li onClick={ () => navigate('/')}>
 							<i className={'fa fa-bars'}/>
