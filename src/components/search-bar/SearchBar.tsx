@@ -4,9 +4,13 @@ import styles from './SearchBar.module.scss';
 import advertisementCategoriesService from '../../services/AdvertisementCategoriesService';
 import locationService from '../../services/LocationService';
 import { LocationModel } from '../../models/LocationModel';
-import postService, { AdvertisementSearchModel } from '../../services/AdvertisementService';
+import { AdvertisementSearchModel } from '../../services/AdvertisementService';
+import { useLocation, useNavigate } from 'react-router-dom';
+import searchBarUtilService from '../../services/SearchBarUtilService';
 
 const SearchBar = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	const [categories, setCategories] = useState<CategoryModel[]>([]);
 	const [locations, setLocations] = useState<LocationModel[]>([]);
@@ -46,12 +50,36 @@ const SearchBar = () => {
 		if (selectedLocation) {
 			query.location = selectedLocation;
 		}
-		postService.getAdvertisements(query);
+		searchBarUtilService.setSearchBarSettings(query);
+		navigate('search-result');
+	};
+
+	const loadSavedSearchBarSettings = (settings: AdvertisementSearchModel) => {
+		if (settings.name && settings.name.length > 0) {
+			setName(settings.name);
+		}
+		if (settings.minPrice && settings.minPrice > 0) {
+			setMinPrice(settings.minPrice);
+		}
+		if (settings.maxPrice && settings.maxPrice > 0) {
+			setMaxPrice(settings.maxPrice);
+		}
+		if (settings.category) {
+			setSelectedCategory(settings.category);
+		}
+		if (settings.category) {
+			setSelectedLocation(settings.location);
+		}
 	};
 
 	useEffect(() => {
 		getAllCategoriesList();
 		getAllLocationsList();
+		if (location.pathname === '/search-result') {
+			loadSavedSearchBarSettings(searchBarUtilService.getSearchBarSettings());
+		} else {
+			searchBarUtilService.clearSearchBarSettings();
+		}
 	}, []);
 
 	return (
@@ -61,7 +89,7 @@ const SearchBar = () => {
 				<select className={'form-select ' + styles.locationDropdown}
 					onChange={(event) => {
 						setSelectedLocation(locations.find((location) => location.id === parseInt(event.target.value, 10)));
-					}}>
+					}} value={selectedLocation === null ? 0 : selectedLocation.id}>
 					<option value={0}>Wybierz lokalizację</option>
 					{ locations.map((location) => (
 						<option key={location.id} value={location.id} >{location.name}</option>
@@ -76,7 +104,7 @@ const SearchBar = () => {
 				<select className="form-select" id="inputGroupSelect02" 
 					onChange={ (event) => {
 						setSelectedCategory(categories.find((category) => category.id === parseInt(event.target.value, 10)));
-					}}>
+					}} value={selectedCategory === null ? 0 : selectedCategory.id}>
 					<option value={0}>Wybierz kategorię</option>
 					{ categories.map((category) => (
 						<option key={category.id} value={category.id}>{category.name}</option>
