@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import example from '../../../assets/debil.jpg';
+import example from '../../../assets/sample.jpg';
 import styles from './AdvertisementSearch.module.scss';
 
 import { AdvertisementModel } from '../../../models/AdvertisementModel';
