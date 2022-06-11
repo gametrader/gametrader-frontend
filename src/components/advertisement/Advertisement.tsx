@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import styles from '../advertisement/Advertisement.module.scss';
 import {useNavigate} from 'react-router-dom';
-import example from '../../assets/debil.jpg';
+import example from '../../assets/sample.jpg';
 import {AdvertisementModel} from '../../models/AdvertisementModel';
 
 
