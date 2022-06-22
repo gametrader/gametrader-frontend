@@ -1,4 +1,4 @@
 export type Gender = 
-    'male' |
-    'female' | 
-    'other';
+    'MALE' |
+    'FEMALE' | 
+    'OTHER';
