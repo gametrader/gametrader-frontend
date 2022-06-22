@@ -42,6 +42,16 @@ class AdvertisementService {
 		}).then((response) => response.json());
 	}
 
+	getAdvertisementById(id: number): Promise<AdvertisementModel> {
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/${id}`, {
+			method: 'get',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => response.json());
+	}
+
 	addAdvertisement(advertisement: AdvertisementModel, file: File) {
 		const formData = new FormData();
 		formData.append('dto', JSON.stringify(advertisement));

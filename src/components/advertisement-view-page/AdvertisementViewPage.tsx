@@ -1,26 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './AdvertisementViewPage.module.scss';
 import example from '../../assets/sample.jpg';
 
 import {useParams} from 'react-router-dom';
+import {AdvertisementModel} from '../../models/AdvertisementModel';
+import advertisementService from '../../services/AdvertisementService';
 
 
 const AdvertisementViewPage = () => {
 	const params = useParams();
+
+	const [advertisement, setAdvertisement] = useState<AdvertisementModel>(null);
+
+	useEffect(() => {
+		advertisementService.getAdvertisementById(parseInt(params.id, 10)).then((response) => setAdvertisement(response));
+	}, []);
+
 	return (
 		<>
-			<div className={'gt-container '}>
-				<div className={'' + styles.header}>
-					<h2>TYTUL OGLOSZENIA</h2>
+			<header>
+				<div className={'gt-container'}>
+					<h1 className={'gt-vt-font ' + styles.header}>{advertisement?.title}</h1>
 				</div>
+			</header>
+			<div className={'gt-container '}>
 
 				<ul className={styles.imageContainer}>
 					<li className={'chevron'}>
 						<i className={'fa fa-chevron-left'}/>
 					</li>
 
-					<li style={{width: '100%'}}>
-						<img src={example}/>
+					<li className={styles.image}>
+						<img src={example} style={{height: '100%'}}/>
 					</li>
 
 					<li className={'chevron'}>
@@ -30,23 +41,13 @@ const AdvertisementViewPage = () => {
 
 
 				<div className={'' + styles.infoContainer}>
-					<p className={'' + styles.price}>
-						22zł
-					</p>
+					<div className={'' + styles.price}>
+						{advertisement?.price}zł
+					</div>
 					<div className={'' + styles.description}>
 						<h3>OPIS</h3>
 						<p>
-							Witam, na sprzedaż mam 2 książki, są to:
-
-							1.Wędrówki po Lubelszczyźnie Leona Wyszczółkowskiego. Katalog wystawy z okazji 100 lecia
-							Muzeum Lubelskiego oraz 70 rocznicy śmierci artysty, książka z dziełami.
-
-							2. LUBLIN. Książka z 1956r z powojennymi zdjęciami stolicy Lubelszczyzny. W kolorze czarno
-							białym, z uwagi na wiek trochę pożółkła.
-
-							Książki w stanie bardzo dobrym, szczególnie album Wyszczółkowskiego.
-
-							Zapraszam!
+							{advertisement?.description}
 						</p>
 					</div>
 				</div>

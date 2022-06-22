@@ -10,10 +10,10 @@ const Header = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [, forceUpdate] = useReducer(x => x + 1, 0);
 	const handleLogout = () => {
-		console.log('dupa2');
 		authService.deleteJWTToken();
 		authService.logout();
 		setIsLoggedIn(authService.getJWTToken ? true : false);
+		navigate('/login');
 		forceUpdate();
 	};
 
