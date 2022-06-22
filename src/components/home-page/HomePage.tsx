@@ -7,7 +7,6 @@ import {AdvertisementModel} from '../../models/AdvertisementModel';
 import SearchBar from '../search-bar/SearchBar';
 import advertisementCategoriesService from '../../services/AdvertisementCategoriesService';
 import advertisementService from '../../services/AdvertisementService';
-import {useNavigate} from 'react-router-dom';
 
 const HomePage = () => {
 	const [allCategories, setAllCategories] = useState<CategoryModel[]>([]);
@@ -23,7 +22,6 @@ const HomePage = () => {
 	const [selectedAdvertisementsStartIndex, setSelectedAdvertisementsStartIndex] = useState<number>(0);
 	const [selectedAdvertisementsEndIndex, setSelectedAdvertisementsEndIndex] = useState<number>(6);
 
-	const navigate = useNavigate();
 
 	const setCategoriesSlider = () => {
 		setCategories(allCategories.slice(categoriesStartIndex, categoriesEndIndex));
@@ -86,11 +84,6 @@ const HomePage = () => {
 		});
 	};
 
-	const routeToAdvertisementView = () => {
-		const path = '/view-advertisement';
-		navigate(path);
-	};
-
 	useEffect(() => {
 		// Add initializing logic here
 		getAllCategoriesList();
@@ -117,7 +110,7 @@ const HomePage = () => {
 							<i className={'fa fa-chevron-left'}/>
 						</li>
 						{selectedAdvertisements.map((advertisement, index) => (
-							<li key={index} onClick={routeToAdvertisementView}>
+							<li key={index}>
 								<Advertisement advertisement={advertisement}/>
 							</li>
 						))}

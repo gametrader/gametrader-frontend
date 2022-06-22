@@ -22,7 +22,7 @@ const App = () => {
 					<Route path='/login' element={<LoginPage/>}/>
 					<Route path='/search-result' element={<SearchResultPage/>}/>
 					<Route path='/add-advertisement' element={<AddAdvertisementPage/>}/>
-					<Route path='/view-advertisement' element={<AdvertisementViewPage/>}/>
+					<Route path='/view-advertisement/:id' element={<AdvertisementViewPage/>}/>
 				</Routes>
 				<Footer/>
 			</div>

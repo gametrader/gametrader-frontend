@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './AdvertisementViewPage.module.scss';
 import example from '../../assets/sample.jpg';
+import {useParams} from 'react-router-dom';
 
 
 const AdvertisementViewPage = () => {
+	const params = useParams();
 	return (
 		<>
 			<div className={'gt-container '}>
