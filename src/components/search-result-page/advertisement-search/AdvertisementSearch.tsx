@@ -13,7 +13,7 @@ const AdvertisementSearch: FunctionComponent<{ advertisement: AdvertisementModel
 			</div>
 			<div className={styles.advertisementDetails}>
 				<h1>{advertisement.price} zł</h1>
-				<div>{advertisement.location}</div>
+				<div>{advertisement.localization}</div>
 				<div className={styles.userInfo}>
 					<div>
 						nazwa uzytkownika
