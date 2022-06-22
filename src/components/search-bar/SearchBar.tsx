@@ -86,7 +86,7 @@ const SearchBar = () => {
 		<div className={styles.searchBar}>
 			<div className='input-group input-group-lg'>
 				<input type='text' className='form-control' placeholder='Wyszukaj...' value={name}
-					   onChange={(event) => setName(event.target.value)}/>
+					onChange={(event) => setName(event.target.value)}/>
 				<select className={'form-select ' + styles.locationDropdown}
 					onChange={(event) => {
 						setSelectedLocation(locations.find((location) => location.id === parseInt(event.target.value, 10)));
@@ -114,12 +114,12 @@ const SearchBar = () => {
 				</select>
 				<label className="input-group-text">Min. cena</label>
 				<input type='number' className={'form-control ' + styles.priceInput}
-					   value={minPrice} onChange={(event) => setMinPrice(parseInt(event.target.value, 10))} min={0}
-					   max={maxPrice ? maxPrice : 99999}/>
+					value={minPrice} onChange={(event) => setMinPrice(parseInt(event.target.value, 10))} min={0}
+					max={maxPrice ? maxPrice : 99999}/>
 				<label className="input-group-text">Maks. cena</label>
 				<input type='number' className={'form-control ' + styles.priceInput}
-					   value={maxPrice} onChange={(event) => setMaxPrice(parseInt(event.target.value, 10))} max={99999}
-					   min={minPrice ? minPrice : 0}/>
+					value={maxPrice} onChange={(event) => setMaxPrice(parseInt(event.target.value, 10))} max={99999}
+					min={minPrice ? minPrice : 0}/>
 			</div>
 		</div>
 	);
