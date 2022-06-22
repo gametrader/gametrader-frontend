@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import {useNavigate} from 'react-router-dom';
 import logo from '../../assets/gametrader-logo-version-1.png';
 import styles from '../header/Header.module.scss';
@@ -7,19 +7,13 @@ import authService from '../../auth/AuthService';
 const Header = () => {
 	const navigate = useNavigate();
 
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [, forceUpdate] = useReducer(x => x + 1, 0);
 	const handleLogout = () => {
 		authService.deleteJWTToken();
 		authService.logout();
-		setIsLoggedIn(authService.getJWTToken ? true : false);
 		navigate('/login');
 		forceUpdate();
 	};
-
-	useEffect(() => {
-		setIsLoggedIn(authService.getJWTToken ? true : false);
-	}, []);
 
 	return (
 		<header className={'navbar sticky-top ' + styles.gtHeader}>
