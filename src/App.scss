@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=VT323&display=swap');
 
-body{
+body {
   $gt-primary-color: #FB8122;
   $gt-secondary-color: #403E58;
   $gt-background-color: #1D2228;
@@ -13,20 +13,20 @@ body{
 
   .gt-btn-primary {
     color: white !important;
-    @include button-variant($gt-primary-color, darken($gt-primary-color, 7.5%), darken($gt-primary-color, 10%), lighten($gt-primary-color,5%), lighten($gt-primary-color, 10%), darken($gt-primary-color,30%));
+    @include button-variant($gt-primary-color, darken($gt-primary-color, 7.5%), darken($gt-primary-color, 10%), lighten($gt-primary-color, 5%), lighten($gt-primary-color, 10%), darken($gt-primary-color, 30%));
   }
 
   .gt-btn-outline-primary {
-    @include button-outline-variant($gt-primary-color, #222222, lighten($gt-primary-color,5%), );
+    @include button-outline-variant($gt-primary-color, #222222, lighten($gt-primary-color, 5%),);
   }
 
   .gt-btn-secondary {
     color: white !important;
-    @include button-variant($gt-secondary-color, darken($gt-secondary-color, 7.5%), darken($gt-secondary-color, 10%), lighten($gt-secondary-color,5%), lighten($gt-secondary-color, 10%), darken($gt-secondary-color,30%));
+    @include button-variant($gt-secondary-color, darken($gt-secondary-color, 7.5%), darken($gt-secondary-color, 10%), lighten($gt-secondary-color, 5%), lighten($gt-secondary-color, 10%), darken($gt-secondary-color, 30%));
   }
 
   .gt-btn-outline-secondary {
-    @include button-outline-variant($gt-secondary-color, #222222, lighten($gt-secondary-color,5%), );
+    @include button-outline-variant($gt-secondary-color, #222222, lighten($gt-secondary-color, 5%),);
   }
 
   .gt-vt-font {
@@ -52,32 +52,41 @@ html, body, #root {
   padding: 0 5em;
 }
 
-.gt-container{
+.gt-container {
   width: 90vw;
   margin: 0 auto;
 }
 
 @media (min-width: 600px) {
-  .gt-container{
+  .gt-container {
     min-width: 480px;
   }
 }
 
 @media (min-width: 960px) {
-  .gt-container{
+  .gt-container {
     min-width: 840px;
   }
 }
 
 
 @media (min-width: 1440px) {
-  .gt-container{
+  .gt-container {
     min-width: 1280px;
   }
 }
 
 @media (min-width: 1920px) {
-  .gt-container{
+  .gt-container {
     min-width: 1600px;
+  }
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
   }
 }
