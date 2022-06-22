@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { LoginRequest } from './models/LoginRequest';
-import { LoginResponse } from './models/LoginResponse';
-import { RegisterRequest } from './models/RegisterRequest';
+import {LoginRequest} from './models/LoginRequest';
+import {LoginResponse} from './models/LoginResponse';
+import {RegisterRequest} from './models/RegisterRequest';
 
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.options = {
-	'Access-Control-Allow-Origin':'*'
+	'Access-Control-Allow-Origin': '*'
 };
+
 class AuthService {
 	static JWT_TOKEN_KEY = 'JWT_TOKEN';
 	static REFRESH_TOKEN_KEY = 'RERFESH_TOKEN';
@@ -39,7 +40,7 @@ class AuthService {
 	}
 
 	refreshToken() {
-		return axios.post(`${process.env.REACT_APP_API_URL}/refresh-token`, { refreshToken: this.getRefreshToken() })
+		return axios.post(`${process.env.REACT_APP_API_URL}/refresh-token`, {refreshToken: this.getRefreshToken()})
 			.then(response => {
 				if (response.data.token) {
 					this.storeJWTToken(response.data.token);
@@ -57,12 +58,12 @@ class AuthService {
 		return localStorage.getItem(AuthService.REFRESH_TOKEN_KEY);
 	}
 
-	private storeJWTToken(token: string) {
-		localStorage.setItem(AuthService.JWT_TOKEN_KEY, token);
+	deleteJWTToken() {
+		localStorage.removeItem(AuthService.JWT_TOKEN_KEY);
 	}
 
-	private deleteJWTToken() {
-		localStorage.removeItem(AuthService.JWT_TOKEN_KEY);
+	private storeJWTToken(token: string) {
+		localStorage.setItem(AuthService.JWT_TOKEN_KEY, token);
 	}
 
 	private storeRefreshToken(token: string) {
