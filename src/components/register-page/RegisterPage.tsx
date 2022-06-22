@@ -1,20 +1,20 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import authService from '../../auth/AuthService';
 import { RegisterRequest } from '../../auth/models/RegisterRequest';
 import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
+	const navigate = useNavigate();
 	const { register, formState: { errors }, handleSubmit, watch } = useForm<RegisterRequest>(); 
 	const onRegisterSubmit: SubmitHandler<RegisterRequest> = (data: RegisterRequest) => {
 		authService.register(data).then(
 			() => {
-				// TODO Route user back to /login
-				console.log('dawdwad');
+				navigate('/login');
 			},
 			() => {
-				// TODO Handle 400 responses from backend
-				console.log('error');
+				console.log('Błąd serwera/Złe dane');
 			}
 		);
 	};

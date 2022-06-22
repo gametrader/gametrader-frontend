@@ -23,7 +23,7 @@ const Advertisement: FunctionComponent<{ advertisement: AdvertisementModel }> = 
 					</h3>
 
 					<h4 className={'' + styles.localization}>
-						{advertisement.location}
+						{advertisement.localization}
 					</h4>
 				</div>
 				<p>{advertisement.price}zł</p>
