@@ -3,23 +3,34 @@ import { LoginRequest } from './models/LoginRequest';
 import { LoginResponse } from './models/LoginResponse';
 import { RegisterRequest } from './models/RegisterRequest';
 
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.options = {
+	'Access-Control-Allow-Origin':'*'
+};
 class AuthService {
 	static JWT_TOKEN_KEY = 'JWT_TOKEN';
 	static REFRESH_TOKEN_KEY = 'RERFESH_TOKEN';
 
 	login(loginRequest: LoginRequest) {
-		return axios.post<LoginResponse>(`${process.env.REACT_APP_API_URL}/login`, loginRequest)
-			.then(response => {
-				if (response.data.token) {
-					this.storeJWTToken(response.data.token);
-					this.storeRefreshToken(response.data.refresh);
-				}
-				return response.data;
-			});
+		return fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
+			method: 'post',
+			body: JSON.stringify(loginRequest)
+		}).then(response => response.json().then((data: LoginResponse) => {
+			this.storeJWTToken(data.access_token);
+			this.storeRefreshToken(data.refresh_token);
+		}));
 	}
 
 	register(registerRequest: RegisterRequest) {
-		return axios.post(`${process.env.REACT_APP_API_URL}/register`, registerRequest);
+		return fetch(`${process.env.REACT_APP_API_URL}/user/v1/api/auth/register`, {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(registerRequest)
+		}).then((response) => response.json());
+		// return axios.post(`${process.env.REACT_APP_API_URL}/user/register`, registerRequest);
 	}
 
 	logout() {
