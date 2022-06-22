@@ -14,7 +14,7 @@ const RegisterPage = () => {
 			},
 			() => {
 				// TODO Handle 400 responses from backend
-				console.log('error')
+				console.log('error');
 			}
 		);
 	};
