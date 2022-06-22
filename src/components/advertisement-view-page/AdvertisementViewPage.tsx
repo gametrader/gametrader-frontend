@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AdvertisementViewPage.module.scss';
-import example from '../../assets/debil.jpg';
+import example from '../../assets/sample.jpg';
 
 
 const AdvertisementViewPage = () => {
@@ -10,7 +10,7 @@ const AdvertisementViewPage = () => {
 				<div className={'' + styles.header}>
 					<h2>TYTUL OGLOSZENIA</h2>
 				</div>
-			
+
 				<ul className={styles.imageContainer}>
 					<li className={'chevron'}>
 						<i className={'fa fa-chevron-left'}/>

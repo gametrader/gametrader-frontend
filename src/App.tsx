@@ -7,8 +7,9 @@ import LoginPage from './components/login-page/LoginPage';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import AddAdvertisementPage from './components/add-advertisement-page/AddAdvertisementPage';
-import AdvertisementViewPage from './components/advertisement-view-page/AdvertisementViewPage';
+
 import SearchResultPage from './components/search-result-page/SearchResultPage';
+import AdvertisementViewPage from './components/advertisement-view-page/AdvertisementViewPage';
 
 
 const App = () => {
