@@ -31,15 +31,15 @@ const Header = () => {
 						{/*Być może tę ikonę powinniśmy umieścić w <button></button> bez styli*/}
 
 						<li onClick={() => navigate('/add-advertisement')}
-							style={!authService.getJWTToken() ? {visibility: "hidden"} : {}}>
+							style={!authService.getJWTToken() ? {visibility: 'hidden'} : {}}>
 							<i className={'fa fa-bars'}/>
 							Dodaj
 						</li>
-						<li onClick={() => navigate('/')} style={!authService.getJWTToken() ? {visibility: "hidden"} : {}}>
+						<li onClick={() => navigate('/')} style={!authService.getJWTToken() ? {visibility: 'hidden'} : {}}>
 							<i className={'fa fa-bars'}/>
 							<a href="/">Wiadomości</a>
 						</li>
-						<li onClick={() => navigate('/')} style={!authService.getJWTToken() ? {visibility: "hidden"} : {}}>
+						<li onClick={() => navigate('/')} style={!authService.getJWTToken() ? {visibility: 'hidden'} : {}}>
 							<i className={'fa fa-bars'}/>
 							<a href="/">Konto</a>
 						</li>
