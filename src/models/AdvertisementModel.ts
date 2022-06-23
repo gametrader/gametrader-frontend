@@ -8,7 +8,7 @@ export class AdvertisementModel {
 	category?: CategoryModel;
 	description?: string;
 	localization?: string;
-	emailNumber?: string;
+	email?: string;
 	phoneNumber?: string;
 	price?: number;
 	isPromoted?: boolean;
