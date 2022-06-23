@@ -52,7 +52,7 @@ class AdvertisementService {
 		}).then((response) => response.json());
 	}
 
-	async addAdvertisement(advertisement: AdvertisementModel, file: File): Promise<any> {
+	async addAdvertisement(advertisement: AdvertisementModel, file: File) {
 		const formData = new FormData();
 		formData.append('files', file);
 		const imageUploadResponse = await fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/storage/add`, {
