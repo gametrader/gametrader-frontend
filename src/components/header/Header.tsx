@@ -29,15 +29,17 @@ const Header = () => {
 					<ul className={'col-xs col-sm-5 col-md-5 col-lg-6 col-xl-6 ' + styles.rightSection}>
 						{/* Add aditional buttons here if you want them to the left side */}
 						{/*Być może tę ikonę powinniśmy umieścić w <button></button> bez styli*/}
-						<li onClick={() => navigate('/add-advertisement')}>
+
+						<li onClick={() => navigate('/add-advertisement')}
+							style={!authService.getJWTToken() ? {visibility: "hidden"} : {}}>
 							<i className={'fa fa-bars'}/>
 							Dodaj
 						</li>
-						<li onClick={() => navigate('/')}>
+						<li onClick={() => navigate('/')} style={!authService.getJWTToken() ? {visibility: "hidden"} : {}}>
 							<i className={'fa fa-bars'}/>
 							<a href="/">Wiadomości</a>
 						</li>
-						<li onClick={() => navigate('/')}>
+						<li onClick={() => navigate('/')} style={!authService.getJWTToken() ? {visibility: "hidden"} : {}}>
 							<i className={'fa fa-bars'}/>
 							<a href="/">Konto</a>
 						</li>
