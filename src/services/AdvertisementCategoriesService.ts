@@ -1,22 +1,21 @@
 import { CategoryModel } from './../models/CategoryModel';
+const STORED_CATEGORIES_KEY = 'categories';
+
 class AdvertisementCategoriesService {
 	getAdvertisementCategories(): Promise<CategoryModel[]> {
-		// TODO actual HTTP request
-		return new Promise(resolve => resolve([
-			{ id: 1, name: 'Gry', iconName: 'fa fa-gamepad' },
-			{ id: 2, name: 'Komputery', iconName: 'fa fa-desktop' },
-			{ id: 3, name: 'Laptopy', iconName: 'fa fa-laptop' },
-			{ id: 4, name: 'Monitory i TV', iconName: 'fa fa-television' },
-			{ id: 5, name: 'Karty graficzne', iconName: 'fa fa-microchip' },
-			{ id: 6, name: 'Klawiatury', iconName: 'fa fa-keyboard-o' },
-			{ id: 7, name: 'Myszki', iconName: 'fa fa-mouse-pointer' },
-			{ id: 8, name: 'Kontrolery', iconName: 'fa fa-gamepad' },
-			{ id: 9, name: 'Podzespoły do PC', iconName: 'fa fa-cogs' },
-			{ id: 10, name: 'Słuchawki', iconName: 'fa fa-headphones' },
-			{ id: 11, name: 'Fotele', iconName: 'fa fa-bolt' },
-			{ id: 12, name: 'Akcesoria', iconName: 'fa fa-barcode' },
-		]));
-		// return Promise.resolve();
+		if (localStorage.getItem(STORED_CATEGORIES_KEY) === null) {
+			const request = fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/category/get/all`, {
+				method: 'get',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				}
+			}).then((response) => response.json());
+			request.then((data) => localStorage.setItem(STORED_CATEGORIES_KEY, JSON.stringify(data)));
+			return request;
+		} else {
+			return new Promise(resolve => resolve(JSON.parse(localStorage.getItem(STORED_CATEGORIES_KEY))));
+		}
 	}
 }
 

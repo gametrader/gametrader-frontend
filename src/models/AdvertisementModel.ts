@@ -1,3 +1,4 @@
+import { ImageModel } from './ImageModel';
 import { CategoryModel } from './CategoryModel';
 
 export class AdvertisementModel {
@@ -11,6 +12,6 @@ export class AdvertisementModel {
 	phoneNumber?: string;
 	price?: number;
 	isPromoted?: boolean;
-	imgUrl?: string;
+	image?: ImageModel;
 	createdAt?: Date;
 }
