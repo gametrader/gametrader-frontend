@@ -5,11 +5,17 @@ import example from '../../assets/sample.jpg';
 import {AdvertisementModel} from '../../models/AdvertisementModel';
 
 
-const Advertisement:FunctionComponent<{advertisement: AdvertisementModel}> = ({advertisement}) => {
+const Advertisement: FunctionComponent<{ advertisement: AdvertisementModel }> = ({advertisement}) => {
 	const navigate = useNavigate();
+
+	const routeToAdvertisementView = () => {
+		const path = `/view-advertisement/${advertisement.id}`;
+		navigate(path);
+	};
+
 	return (
-		<div className={'' + styles.advertisement}>
-			<img className={'' + styles.previewImage} src={example} onClick={ () => navigate('/')}  alt='Preview image'/>
+		<div className={'' + styles.advertisement} onClick={routeToAdvertisementView}>
+			<img className={'' + styles.previewImage} src={example} onClick={() => navigate('/')} alt='Preview image'/>
 			<div className={'' + styles.content}>
 				<div>
 					<h3 className={'' + styles.title}>

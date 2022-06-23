@@ -1,6 +1,6 @@
-import { AdvertisementModel } from './../models/AdvertisementModel';
-import { CategoryModel } from '../models/CategoryModel';
-import { LocationModel } from '../models/LocationModel';
+import {AdvertisementModel} from './../models/AdvertisementModel';
+import {CategoryModel} from '../models/CategoryModel';
+import {LocationModel} from '../models/LocationModel';
 
 export class AdvertisementSearchModel {
 	name?: string;
@@ -34,6 +34,16 @@ class AdvertisementService {
 	getAdvertisements(searchCriteria: AdvertisementSearchModel): Promise<AdvertisementModel[]> {
 		console.log(searchCriteria);
 		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/all`, {
+			method: 'get',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => response.json());
+	}
+
+	getAdvertisementById(id: number): Promise<AdvertisementModel> {
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/${id}`, {
 			method: 'get',
 			headers: {
 				'Accept': 'application/json',
