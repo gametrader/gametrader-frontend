@@ -81,11 +81,11 @@ const AddAdvertisementPage = () => {
 					</div>
 
 					<div className={styles.section}>
-						<label htmlFor={'location'}><h3>Lokalizacja*</h3></label>
-						<input {...register('localization')} type='text' name='location' />
+						<label htmlFor={'telephone-number'}><h3>Lokalizacja</h3></label>
+						<input type='text' name='price' {...register('localization', {required: true})}/>
 
 						<label htmlFor={'email'}><h3>Adres e-mail</h3></label>
-						<input type='text' name='email' {...register('emailNumber', {required: true})}/>
+						<input type='text' name='email' {...register('email', {required: true})}/>
 
 						<label htmlFor={'telephone-number'}><h3>Numer telefonu</h3></label>
 						<input type='text' name='location' {...register('phoneNumber', {required: true})}/>
