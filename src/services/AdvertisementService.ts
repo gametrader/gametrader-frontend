@@ -68,7 +68,13 @@ class AdvertisementService {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(advertisement)
-		}).then((response) => response.json());
+		});
+	}
+
+	getAdvertisementImage(imageName: string): Promise<Blob> {
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/storage/get/${imageName}`, {
+			method: 'get',
+		}).then(response => response.blob());
 	}
 }
 
