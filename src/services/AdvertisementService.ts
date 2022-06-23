@@ -52,20 +52,22 @@ class AdvertisementService {
 		}).then((response) => response.json());
 	}
 
-	addAdvertisement(advertisement: AdvertisementModel, file: File) {
+	async addAdvertisement(advertisement: AdvertisementModel, file: File) {
 		const formData = new FormData();
-		formData.append('dto', JSON.stringify(advertisement));
 		formData.append('files', file);
+		const imageUploadResponse = await fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/storage/add`, {
+			method: 'post',
+			body: formData
+		}).then((response) => response.json());
+		advertisement.image = imageUploadResponse;
+		advertisement.authorId = 1;
 		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/create`, {
 			method: 'post',
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({
-				dto: advertisement,
-				files: [file]
-			})
+			body: JSON.stringify(advertisement)
 		}).then((response) => response.json());
 	}
 }

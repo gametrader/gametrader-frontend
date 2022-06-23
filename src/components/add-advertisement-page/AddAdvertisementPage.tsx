@@ -21,10 +21,12 @@ const AddAdvertisementPage = () => {
 		});
 	};
 
-	const onAdvertisementSubmit: SubmitHandler<AdvertisementModel> = (data: AdvertisementModel) => {
-		imageService.addAdvertisement(data, image.file).then(
-			() => {
-				navigate('/search-results');
+	const onAdvertisementSubmit: SubmitHandler<AdvertisementModel> = async (data: AdvertisementModel) => {
+		await imageService.addAdvertisement(data, image.file).then(
+			(response) => {
+				console.log(response);
+				const path = `/view-advertisement/${response.id}`;
+				navigate(path);
 			},
 			(error) => {
 				console.log(error);
@@ -77,7 +79,7 @@ const AddAdvertisementPage = () => {
 
 					<div className={styles.section}>
 						<label htmlFor={'description'}><h3>Opis ogłoszenia</h3></label>
-						<textarea name='description' className={styles.descriptionField} {...register('description')}></textarea>
+						<textarea name='description' className={styles.descriptionField} {...register('description', {required: true})}></textarea>
 					</div>
 
 					<div className={styles.section}>
@@ -85,10 +87,13 @@ const AddAdvertisementPage = () => {
 						<input {...register('localization')} type='text' name='location' />
 
 						<label htmlFor={'email'}><h3>Adres e-mail</h3></label>
-						<input type='text' name='email' {...register('emailNumber')}/>
+						<input type='text' name='email' {...register('emailNumber', {required: true})}/>
 
 						<label htmlFor={'telephone-number'}><h3>Numer telefonu</h3></label>
-						<input type='text' name='location' {...register('phoneNumber')}/>
+						<input type='text' name='location' {...register('phoneNumber', {required: true})}/>
+
+						<label htmlFor={'telephone-number'}><h3>Cena</h3></label>
+						<input type='text' name='price' {...register('price', {required: true})}/>
 					</div>
 					<div className={styles.buttonToRight}>
 						<input
