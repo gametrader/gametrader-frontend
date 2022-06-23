@@ -3,17 +3,19 @@ import styles from './LoginPage.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { LoginRequest } from '../../auth/models/LoginRequest';
 import authService from '../../auth/AuthService';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+	const navigate = useNavigate();
 	const { register, formState: { errors }, handleSubmit } = useForm<LoginRequest>();
 	const onLoginSubmit: SubmitHandler<LoginRequest> = (data: LoginRequest) => {
 		console.log(data);
 		authService.login(data).then(
 			() => {
-				// TODO Forward user to desired website (probably with router parameters)
+				navigate('/');
 			},
 			() => {
-				// TODO Handle 400 responses from backend
+				alert('Zły login/hasło!');
 			}
 		);
 	};

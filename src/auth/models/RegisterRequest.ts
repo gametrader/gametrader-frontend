@@ -1,10 +1,10 @@
-import { Gender } from "./Gender";
+import { Gender } from './Gender';
 
 export class RegisterRequest {
-    username: string;
-    password: string;
-    confirmPassword: string;
-    email: string;
-    dateOfBirth: Date;
-    gender: Gender
+	username: string;
+	password: string;
+	matchingPassword: string;
+	email: string;
+	birthdate: Date;
+	gender: Gender;
 }

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { CategoryModel } from '../../models/CategoryModel';
+import React, {useEffect, useState} from 'react';
+import {CategoryModel} from '../../models/CategoryModel';
 import styles from './SearchBar.module.scss';
 import advertisementCategoriesService from '../../services/AdvertisementCategoriesService';
 import locationService from '../../services/LocationService';
-import { LocationModel } from '../../models/LocationModel';
-import { AdvertisementSearchModel } from '../../services/AdvertisementService';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {LocationModel} from '../../models/LocationModel';
+import {AdvertisementSearchModel} from '../../services/AdvertisementService';
+import {useLocation, useNavigate} from 'react-router-dom';
 import searchBarUtilService from '../../services/SearchBarUtilService';
 
 const SearchBar = () => {
@@ -51,7 +51,7 @@ const SearchBar = () => {
 			query.location = selectedLocation;
 		}
 		searchBarUtilService.setSearchBarSettings(query);
-		navigate('search-result');
+		navigate('/search-result');
 	};
 
 	const loadSavedSearchBarSettings = (settings: AdvertisementSearchModel) => {
@@ -85,37 +85,41 @@ const SearchBar = () => {
 	return (
 		<div className={styles.searchBar}>
 			<div className='input-group input-group-lg'>
-				<input type='text' className='form-control' placeholder='Wyszukaj...' value={name} onChange={ (event) => setName(event.target.value) }/>
+				<input type='text' className='form-control' placeholder='Wyszukaj...' value={name}
+					onChange={(event) => setName(event.target.value)}/>
 				<select className={'form-select ' + styles.locationDropdown}
 					onChange={(event) => {
 						setSelectedLocation(locations.find((location) => location.id === parseInt(event.target.value, 10)));
 					}} value={selectedLocation === null ? 0 : selectedLocation.id}>
 					<option value={0}>Wybierz lokalizację</option>
-					{ locations.map((location) => (
-						<option key={location.id} value={location.id} >{location.name}</option>
+					{locations.map((location) => (
+						<option key={location.id} value={location.id}>{location.name}</option>
 					))}
 				</select>
-				<button className={'btn btn-outline-secondary ' + styles.searchButton} type='button' onClick={ () => onSearch()}>
+				<button className={'btn btn-outline-secondary ' + styles.searchButton} type='button'
+					onClick={() => onSearch()}>
 					<i style={{color: 'white', marginRight: '0.5rem'}} className={'fa fa-search'}/>
-						Szukaj
+					Szukaj
 				</button>
 			</div>
 			<div className="input-group mb-3 input-group-lg">
-				<select className="form-select" id="inputGroupSelect02" 
-					onChange={ (event) => {
+				<select className="form-select" id="inputGroupSelect02"
+					onChange={(event) => {
 						setSelectedCategory(categories.find((category) => category.id === parseInt(event.target.value, 10)));
 					}} value={selectedCategory === null ? 0 : selectedCategory.id}>
 					<option value={0}>Wybierz kategorię</option>
-					{ categories.map((category) => (
+					{categories.map((category) => (
 						<option key={category.id} value={category.id}>{category.name}</option>
 					))}
 				</select>
 				<label className="input-group-text">Min. cena</label>
-				<input type='number' className={'form-control ' + styles.priceInput} 
-					value={minPrice} onChange={ (event) => setMinPrice(parseInt(event.target.value, 10))} min={0} max={maxPrice ? maxPrice : 99999}/>
+				<input type='number' className={'form-control ' + styles.priceInput}
+					value={minPrice} onChange={(event) => setMinPrice(parseInt(event.target.value, 10))} min={0}
+					max={maxPrice ? maxPrice : 99999}/>
 				<label className="input-group-text">Maks. cena</label>
-				<input type='number' className={'form-control ' + styles.priceInput} 
-					value={maxPrice} onChange={ (event) => setMaxPrice(parseInt(event.target.value, 10))} max={99999} min={minPrice ? minPrice : 0}/>
+				<input type='number' className={'form-control ' + styles.priceInput}
+					value={maxPrice} onChange={(event) => setMaxPrice(parseInt(event.target.value, 10))} max={99999}
+					min={minPrice ? minPrice : 0}/>
 			</div>
 		</div>
 	);

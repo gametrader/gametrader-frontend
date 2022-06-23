@@ -1,18 +1,20 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import authService from '../../auth/AuthService';
 import { RegisterRequest } from '../../auth/models/RegisterRequest';
 import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
+	const navigate = useNavigate();
 	const { register, formState: { errors }, handleSubmit, watch } = useForm<RegisterRequest>(); 
 	const onRegisterSubmit: SubmitHandler<RegisterRequest> = (data: RegisterRequest) => {
 		authService.register(data).then(
 			() => {
-				// TODO Route user back to /login
+				navigate('/login');
 			},
 			() => {
-				// TODO Handle 400 responses from backend
+				console.log('Błąd serwera/Złe dane');
 			}
 		);
 	};
@@ -64,11 +66,11 @@ const RegisterPage = () => {
 					<div className={styles.row}>
 						<label htmlFor={'repeatedPassword'}>Powtórz hasło</label>
 						<div className={styles.inputContainer}>
-							<input type="password" name="userName" {...register('confirmPassword', {
+							<input type="password" name="userName" {...register('matchingPassword', {
 								required: true,
-								validate: (confirmPassword) => confirmPassword === watch('password') 
+								validate: (matchingPassword) => matchingPassword === watch('password') 
 							})}/>
-							{ errors.confirmPassword && <div className={styles.warning}>
+							{ errors.matchingPassword && <div className={styles.warning}>
 								<i className={'fa fa-exclamation-circle'}/>
 								<p>
                                     Hasła się nie zgadzają.
@@ -96,8 +98,8 @@ const RegisterPage = () => {
 					<div className={styles.row}>
 						<label htmlFor={'birthDate'}>Data urodzenia</label>
 						<div className={styles.inputContainer}>
-							<input type="date" name="birthDate" {...register('dateOfBirth', { required: true })} />
-							{ errors.dateOfBirth && <div className={styles.warning}>
+							<input type="date" name="birthDate" {...register('birthdate', { required: true })} />
+							{ errors.birthdate && <div className={styles.warning}>
 								<i className={'fa fa-exclamation-circle'}/>
 								<p>
                                     Data urodzenia jest wymagana.
@@ -110,9 +112,9 @@ const RegisterPage = () => {
 						<label htmlFor={'gender'}>Płeć</label>
 						<div className={styles.inputContainer}>
 							<select name="gender" {...register('gender', { required: true })}>
-								<option value="male">Mężczyzna</option>
-								<option value="female">Kobieta</option>
-								<option value="other">Inne/nie chcę podawać</option>
+								<option value="MALE">Mężczyzna</option>
+								<option value="FEMALE">Kobieta</option>
+								<option value="OTHER">Inne/nie chcę podawać</option>
 							</select>
 							{ errors.gender && <div className={styles.warning}>
 								<i className={'fa fa-exclamation-circle'}/>

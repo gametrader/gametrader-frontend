@@ -1,0 +1,22 @@
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
+
+  .image {
+    height: 300px;
+  }
+
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.infoContainer {
+  text-align: center;
+}
+
+.price {
+  color: var(--gt-primary);
+}

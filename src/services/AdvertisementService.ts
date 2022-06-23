@@ -1,6 +1,6 @@
-import { AdvertisementModel } from './../models/AdvertisementModel';
-import { CategoryModel } from '../models/CategoryModel';
-import { LocationModel } from '../models/LocationModel';
+import {AdvertisementModel} from './../models/AdvertisementModel';
+import {CategoryModel} from '../models/CategoryModel';
+import {LocationModel} from '../models/LocationModel';
 
 export class AdvertisementSearchModel {
 	name?: string;
@@ -12,59 +12,69 @@ export class AdvertisementSearchModel {
 
 class AdvertisementService {
 	getSelectedAdvertisements(): Promise<AdvertisementModel[]> {
-		return new Promise(resolve => resolve([
-			{id: 1, title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 2, title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:true, description: 'lorem lorem lorem lorem'},
-			{id: 3, title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 4, title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 5, title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 6, title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 7, title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 8, title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 9, title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 10, title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-		]));
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/all`, {
+			method: 'get',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => response.json());
 	}
 
 	getRecentlyAddedAdvertisements(): Promise<AdvertisementModel[]> {
-		return new Promise(resolve => resolve([
-			{id: 1, title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 2, title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:true, description: 'lorem lorem lorem lorem'},
-			{id: 3, title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 4, title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 5, title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 6, title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 7, title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 8, title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 9, title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 10, title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 11, title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 12, title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 13, title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 14, title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 1, title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 51, title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 16, title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 17, title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 18, title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 19, title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-		]));
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/all`, {
+			method: 'get',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => response.json());
 	}
 
 	getAdvertisements(searchCriteria: AdvertisementSearchModel): Promise<AdvertisementModel[]> {
 		console.log(searchCriteria);
-		return new Promise(resolve => resolve([
-			{id: 1, title: 'ogłoszenie 1', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 2, title: 'ogłoszenie 2', imgUrl: '', location:'Lublin', price:666, isPromoted:true, description: 'lorem lorem lorem lorem'},
-			{id: 3, title: 'ogłoszenie 3', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 4, title: 'ogłoszenie 4', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 5, title: 'ogłoszenie 5', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 6, title: 'ogłoszenie 6', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 7, title: 'ogłoszenie 7', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 8, title: 'ogłoszenie 8', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 9, title: 'ogłoszenie 9', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-			{id: 11, title: 'ogłoszenie 10', imgUrl: '', location:'Lublin', price:666, isPromoted:false, description: 'lorem lorem lorem lorem'},
-		]));
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/all`, {
+			method: 'get',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => response.json());
+	}
+
+	getAdvertisementById(id: number): Promise<AdvertisementModel> {
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/get/${id}`, {
+			method: 'get',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => response.json());
+	}
+
+	async addAdvertisement(advertisement: AdvertisementModel, file: File) {
+		const formData = new FormData();
+		formData.append('files', file);
+		const imageUploadResponse = await fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/storage/add`, {
+			method: 'post',
+			body: formData
+		}).then((response) => response.json());
+		advertisement.image = imageUploadResponse;
+		advertisement.authorId = 1;
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/create`, {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(advertisement)
+		});
+	}
+
+	getAdvertisementImage(imageName: string): Promise<Blob> {
+		return fetch(`${process.env.REACT_APP_API_URL}/post/v1/post/storage/get/${imageName}`, {
+			method: 'get',
+		}).then(response => response.blob());
 	}
 }
 
