@@ -23,10 +23,8 @@ const AddAdvertisementPage = () => {
 
 	const onAdvertisementSubmit: SubmitHandler<AdvertisementModel> = async (data: AdvertisementModel) => {
 		await imageService.addAdvertisement(data, image.file).then(
-			(response) => {
-				console.log(response);
-				const path = `/view-advertisement/${response.id}`;
-				navigate(path);
+			() => {
+				navigate('/');
 			},
 			(error) => {
 				console.log(error);
