@@ -27,7 +27,7 @@ const Advertisement: FunctionComponent<{ advertisement: AdvertisementModel }> = 
 			<div className={'' + styles.content}>
 				<div>
 					<h3 className={'' + styles.title}>
-						{advertisement.title}
+						{advertisement.title.toLocaleLowerCase()}
 					</h3>
 
 					<h4 className={'' + styles.localization}>
